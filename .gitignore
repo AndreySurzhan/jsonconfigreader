@@ -1,0 +1,6 @@
+./jsonconfigparser.pyproj
+./jsonconfigparser.pyproj.vspscc
+./jsonconfigparser.sln
+./jsonconfigparser/__pycache__
+./tests/__pycache__
+.vs/

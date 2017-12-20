@@ -1,0 +1,28 @@
+{
+  "defaults": {
+    "databaseConnection": "local_connection",
+    "baseUrl": "https://qatest.com"
+  },
+  "databaseConnections": {
+    "app": "app_connection",
+    "local": "<defaults.databaseConnection>"
+  },
+  "branches": {
+    "hotfix": {
+      "databaseOverrides": {
+        "local": "local_hotfix"
+      },
+      "baseUrl": "https://hotfix-qatest.com"
+    },
+
+    "vnext": {
+      "databaseOverrides": {
+        "local": "local_vnext"
+      },
+      "baseUrl": "https://vnext-qatest.com"
+    }
+  }
+}
+  
+  
+  
