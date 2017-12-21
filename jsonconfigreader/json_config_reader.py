@@ -5,8 +5,7 @@ import logging
 import logging
 
 
-
-class JsonConfigParser(object):
+class JsonConfigReader(object):
 
     def __init__(self, config_path, options=None):
         """Class constructor.
@@ -143,15 +142,3 @@ class JsonConfigParser(object):
 
         """
         return address.replace('>', '').replace('<', '')
-    
-##edit the data
-#config['key3'] = 'value3'
-
-##write it back to the file
-#with open('config.json', 'w') as f:
-#    json.dump(config, f)
-
-#config = {'key1': 'value1', 'key2': 'value2'}
-
-#with open('config.json', 'w') as f:
-#    json.dump(config, f)

@@ -1,2 +1,8 @@
-./jsonconfigparser/__pycache__
-./tests/__pycache__
+tests/__pycache__
+.DS_Store
+.idea/
+[distutils]
+dist/
+jsonconfigreader/__pycache__/
+jsonconfigreader.egg-info/
+README.rst

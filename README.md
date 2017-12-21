@@ -1,6 +1,6 @@
 ## Description
 
-Utility that allows to get and parse json config files.
+Utility that allows to read and parse json config files.
 
 Possible to specify links to the default values in the config (See Usage section).
 
@@ -26,6 +26,8 @@ or
 5. Install all project dependencies if needed
 
 `pip install -r requirements.txt`
+
+NOTE: if pypandoc didn't get installed. [Please install it manually](https://pypi.python.org/pypi/pypandoc)
 
 
 ## Usage
