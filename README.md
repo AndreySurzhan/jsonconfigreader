@@ -47,16 +47,16 @@ C:\User\test\qa_hotfix_config.json
 ```
 
 1. Specify that lib in your project dependencies
-2. Import `from jsonconfigparser.json_config_parser import JsonConfigParser`
+2. Import `from jsonconfigparser.json_config_reader import JsonConfigReader`
 3. Create an instance of the class passing config folder path and options
 
 ```
 config_path = 'C:\User\test'
-json_config_parser = JsonConfigParser(config_path,
-                        options={'env': {'env': 'qa', 'branch': 'hotfix'},
+json_config_reader = JsonConfigReader(config_path,
+                        options={'env': {'name': 'qa', 'branch': 'hotfix'},
                                  'file_pattern': '{env[name]}_{env[branch]}_config'})
-config = json_config_parser.get()
-file_path = json_config_parser.get_config_file_path()
+config = json_config_reader.get()
+file_path = json_config_reader.get_config_file_path()
 print(config['dataBase1'])
 print(file_path)
 
