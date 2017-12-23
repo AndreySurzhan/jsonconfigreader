@@ -6,7 +6,7 @@ Possible to specify links to the default values in the config (See Usage section
 
 ## Installation
 
-1. Install python 3.6
+1. Install python 3.6+
 2. Ensure pip, setuptools, and wheel are installed and up to date
    
 `python -m pip install --upgrade pip setuptools wheel`
@@ -17,11 +17,11 @@ Possible to specify links to the default values in the config (See Usage section
 
 or 
 
-`python -m venv c:\path\to\<ENV NAME>`
+`python -m venv %path%\to\<ENV NAME>`
 
 4. Active virtual enviroment
 
-`c:\path\to\<ENV NAME>\Script\activate`
+`%path%\to\<ENV NAME>\Script\activate`
 
 5. Install all project dependencies if needed
 
@@ -47,8 +47,8 @@ C:\User\test\qa_hotfix_config.json
 ```
 
 1. Specify that lib in your project dependencies
-2. inport `from jsonconfigparser.json_config_parser import JsonConfigParser`
-3. create instance of the class passing config folder path and options
+2. Import `from jsonconfigparser.json_config_parser import JsonConfigParser`
+3. Create an instance of the class passing config folder path and options
 
 ```
 config_path = 'C:\User\test'
@@ -64,18 +64,18 @@ print(file_path)
 >> C:\User\test\qa_hotfix_config.json
 ```
 
-NOTE: `options` is optional argumet. It is possible to speficy `config_path` as `C:\User\test\qa_hotfix_config.json`
+NOTE: `options` is an optional argumet. It is possible to speficy `config_path` as `C:\User\test\qa_hotfix_config.json`
 
 
 ## Uploading project to PyPi
 
-1. change version in `setup.py`
-2. upload changes to PyPi server
+1. Change version in `setup.py`
+2. Upload changes to PyPi server
 
 `python setup.py sdist upload -r <Repository URL to the PyPi server>`
 
 
-## Run unit tests
+## Run unit tests (Example for Visual Studio)
 
 1. From Visual Studio
    1. Click `Test` -> `Run` -> `All Test`
