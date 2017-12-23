@@ -21,7 +21,7 @@ setup(name='jsonconfigreader',
       long_description=long_description,
       author='Andrei Surzhan',
       author_email='surzhan.a.y@gmail.com',
-      url='https://github.com/AndreySurzhan/jsonconfigparser',
+      url='https://github.com/AndreySurzhan/jsonconfigreader',
       packages=['jsonconfigreader'],
       classifiers=[
           'Topic :: Utilities',

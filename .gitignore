@@ -6,3 +6,4 @@ dist/
 jsonconfigreader/__pycache__/
 jsonconfigreader.egg-info/
 README.rst
+docs/

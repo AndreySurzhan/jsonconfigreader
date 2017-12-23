@@ -84,3 +84,8 @@ NOTE: `options` is optional argumet. It is possible to speficy `config_path` as 
    1. Navigate into project directory 
    2. `python -m unittest`
 
+## Generate docs
+
+1. Run `easy_install -U sphinx`
+2. Navigate to `docs` folder
+3. Run `sphinx-quickstart`
