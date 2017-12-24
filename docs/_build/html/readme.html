@@ -1,0 +1,185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>README &#8212; jsonconfigreader 1.0.2 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="readme">
+<span id="id1"></span><h1>README<a class="headerlink" href="#readme" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="description">
+<h1>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h1>
+<p>Utility that allows to read and parse json config files.</p>
+<p>Possible to specify links to the default values in the config (See Usage
+section).</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Install python 3.6+</li>
+<li>Ensure pip, setuptools, and wheel are installed and up to date</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pip</span> <span class="pre">setuptools</span> <span class="pre">wheel</span></code></p>
+<ol class="arabic simple" start="3">
+<li>Create virtual enviroment (make sure that is not part of the project)</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">&lt;ENV</span> <span class="pre">NAME&gt;</span></code></p>
+<p>or</p>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">%path%\to\&lt;ENV</span> <span class="pre">NAME&gt;</span></code></p>
+<ol class="arabic simple" start="4">
+<li>Active virtual enviroment</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">%path%\to\&lt;ENV</span> <span class="pre">NAME&gt;\Script\activate</span></code></p>
+<ol class="arabic simple" start="5">
+<li>Install all project dependencies if needed</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
+<p>NOTE: if pypandoc didn’t get installed. <a class="reference external" href="https://pypi.python.org/pypi/pypandoc">Please install it
+manually</a></p>
+</div>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>Example of the config file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">User</span>\<span class="n">test</span>\<span class="n">qa_hotfix_config</span><span class="o">.</span><span class="n">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;defaults&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataBaseUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://db:5000&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;dataBase1&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;defaults.dataBaseUrl&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataBase2&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;defaults.dataBaseUrl&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Specify that lib in your project dependencies</li>
+<li>Import
+<code class="docutils literal"><span class="pre">from</span> <span class="pre">jsonconfigparser.json_config_reader</span> <span class="pre">import</span> <span class="pre">JsonConfigReader</span></code></li>
+<li>Create an instance of the class passing config folder path and
+options</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s1">&#39;C:\User</span><span class="se">\t</span><span class="s1">est&#39;</span>
+<span class="n">json_config_reader</span> <span class="o">=</span> <span class="n">JsonConfigReader</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span>
+                        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;qa&#39;</span><span class="p">,</span> <span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;hotfix&#39;</span><span class="p">},</span>
+                                 <span class="s1">&#39;file_pattern&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{env[name]}</span><span class="s1">_</span><span class="si">{env[branch]}</span><span class="s1">_config&#39;</span><span class="p">})</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">json_config_reader</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">json_config_reader</span><span class="o">.</span><span class="n">get_config_file_path</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dataBase1&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">db</span><span class="p">:</span><span class="mi">5000</span>
+<span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">:</span>\<span class="n">User</span>\<span class="n">test</span>\<span class="n">qa_hotfix_config</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>NOTE: <code class="docutils literal"><span class="pre">options</span></code> is an optional argumet. It is possible to speficy
+<code class="docutils literal"><span class="pre">config_path</span></code> as <code class="docutils literal"><span class="pre">C:\User\test\qa_hotfix_config.json</span></code></p>
+</div>
+<div class="section" id="uploading-project-to-pypi">
+<h1>Uploading project to PyPi<a class="headerlink" href="#uploading-project-to-pypi" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Change version in <code class="docutils literal"><span class="pre">setup.py</span></code></li>
+<li>Upload changes to PyPi server</li>
+</ol>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span> <span class="pre">upload</span> <span class="pre">-r</span> <span class="pre">&lt;Repository</span> <span class="pre">URL</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">PyPi</span> <span class="pre">server&gt;</span></code></p>
+</div>
+<div class="section" id="run-unit-tests-example-for-visual-studio">
+<h1>Run unit tests (Example for Visual Studio)<a class="headerlink" href="#run-unit-tests-example-for-visual-studio" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>From Visual Studio<ol class="arabic">
+<li>Click <code class="docutils literal"><span class="pre">Test</span></code> -&gt; <code class="docutils literal"><span class="pre">Run</span></code> -&gt; <code class="docutils literal"><span class="pre">All</span> <span class="pre">Test</span></code></li>
+<li>View Test run in <code class="docutils literal"><span class="pre">Test</span> <span class="pre">Explorer</span></code></li>
+</ol>
+</li>
+<li>From CLI<ol class="arabic">
+<li>Navigate into project directory</li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">unittest</span></code></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="generate-docs">
+<h1>Generate docs<a class="headerlink" href="#generate-docs" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Run <code class="docutils literal"><span class="pre">easy_install</span> <span class="pre">-U</span> <span class="pre">sphinx</span></code></li>
+<li>Navigate to <code class="docutils literal"><span class="pre">docs</span></code> folder</li>
+<li>Run <code class="docutils literal"><span class="pre">sphinx-quickstart</span></code></li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Andrei Surzhan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/readme.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

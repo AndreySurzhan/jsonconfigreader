@@ -89,3 +89,9 @@ NOTE: `options` is an optional argumet. It is possible to speficy `config_path` 
 1. Run `easy_install -U sphinx`
 2. Navigate to `docs` folder
 3. Run `sphinx-quickstart`
+
+
+## Updated documentation
+
+1. From project root directory run `make clean` to clean `./docs/_build` folder
+2. Run `make html` to generate new documentation
