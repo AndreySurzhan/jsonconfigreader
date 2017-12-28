@@ -29,6 +29,7 @@ or
 
 NOTE: if pypandoc didn't get installed. [Please install it manually](https://pypi.python.org/pypi/pypandoc)
 
+`pip install pypandoc`
 
 ## Usage
 

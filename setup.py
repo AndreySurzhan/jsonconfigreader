@@ -1,22 +1,20 @@
-import pypandoc
-
 from setuptools import setup
-from codecs import open
-from os import path
 
 #converts markdown to reStructured
-converter_readme = pypandoc.convert('README.md', 'rst', format='markdown')
-
-#writes converted file
-with open('README.rst', 'w') as outfile:
-    outfile.write(converter_readme)
-
-# Get the long description from the README file
-with open(path.join(path.dirname(path.abspath(__file__)), 'README.rst')) as f:
-    long_description = f.read()
+try:
+    import pypandoc
+except ImportError:
+    print("Install pypandoc to generate the field long_description")
+    pypandoc = None
+if pypandoc:
+    long_description = "\n\n".join([
+        pypandoc.convert('README.md', 'rst', format='markdown'),
+    ])
+else:
+    long_description = "[pypandoc missing]"
 
 setup(name='jsonconfigreader',
-      version='1.1.0',
+      version='1.1.6',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',
@@ -25,7 +23,6 @@ setup(name='jsonconfigreader',
       packages=['jsonconfigreader'],
       install_requires=[
           'pypandoc'
-          'Sphinx',
       ],
       classifiers=[
           'Topic :: Utilities',
