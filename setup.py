@@ -23,6 +23,10 @@ setup(name='jsonconfigreader',
       author_email='surzhan.a.y@gmail.com',
       url='https://github.com/AndreySurzhan/jsonconfigreader',
       packages=['jsonconfigreader'],
+      install_requires=[
+          'pypandoc,'
+          'Sphinx',
+      ],
       classifiers=[
           'Topic :: Utilities',
           'Intended Audience :: Developers',

@@ -7,14 +7,12 @@ import logging
 
 class JsonConfigReader(object):
 
-    def __init__(self, config_path, options=None):
+    def __init__(self, config_path):
         """Class constructor.
 
         Args:
-            config_path (str): configuration folder wihtout trailling '\' or file absolute path with *.json extension.
-            options (?dict): Options that contain information about environment and config file patther.
-            options['env'] (dict): Environment description. Example: '{'name': 'qa', 'branch': 'hotfix'}' or {'name': stg} etc.
-            options['file_pattern'] (str): File pattern option. Should match Environment keys. Example: '{env[name]}_{env[branch]}_config' or '{evn[name]}Config' etc.
+            config_path (str): configuration file absolute path with *.json extension.
+            
         Returns:
             Void
 
@@ -22,9 +20,7 @@ class JsonConfigReader(object):
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
         self.config_path = config_path
-        self.options = options   
-        self.config_file_path = self.get_config_file_path()      
-        config = self.read_json_file(self.config_file_path)
+        config = self.read_json_file(self.config_path)
         self.config = self._parse_config(config)
 
     def read_json_file(self, file_path):
@@ -72,12 +68,7 @@ class JsonConfigReader(object):
             srt: full config file path
 
         """
-        if self.options is None or type(self.options) is not dict:
-            return self.config_path
-        file_pattern = self.options['file_pattern']
-        file_name = file_pattern.format(env=self.options['env'])
-        file_name = file_name + '.json'
-        return os.path.join(self.config_path, file_name)
+        return self.config_path
 
     def is_default_value(self, string_value):
         """Class method that figures out whether string is custom default variable in config.
