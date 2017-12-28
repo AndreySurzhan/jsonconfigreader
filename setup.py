@@ -12,7 +12,7 @@ with open('README.rst', 'w') as outfile:
     outfile.write(converter_readme)
 
 # Get the long description from the README file
-with open(path.join(path.dirname(path.abspath(__file__)), 'README.rst'), encoding='utf-8') as f:
+with open(path.join(path.dirname(path.abspath(__file__)), 'README.rst')) as f:
     long_description = f.read()
 
 setup(name='jsonconfigreader',
@@ -24,7 +24,7 @@ setup(name='jsonconfigreader',
       url='https://github.com/AndreySurzhan/jsonconfigreader',
       packages=['jsonconfigreader'],
       install_requires=[
-          'pypandoc,'
+          'pypandoc'
           'Sphinx',
       ],
       classifiers=[

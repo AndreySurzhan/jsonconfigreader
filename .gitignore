@@ -5,7 +5,6 @@ tests/__pycache__
 dist/
 jsonconfigreader/__pycache__/
 jsonconfigreader.egg-info/
-README.rst
 jsonconfigreader/__init__.pyc
 jsonconfigreader/json_config_reader.pyc
 venv/
