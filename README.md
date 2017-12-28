@@ -27,7 +27,7 @@ or
 
 `pip install -r requirements.txt`
 
-NOTE: if pypandoc didn't get installed. [Please install it manually](https://pypi.python.org/pypi/pypandoc)
+6. Install pandoc and pypandoc. [Instruction](https://pypi.python.org/pypi/pypandoc)
 
 `pip install pypandoc`
 
