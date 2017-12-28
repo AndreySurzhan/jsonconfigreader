@@ -16,7 +16,7 @@ with open(path.join(path.dirname(path.abspath(__file__)), 'README.rst'), encodin
     long_description = f.read()
 
 setup(name='jsonconfigreader',
-      version='1.0.2',
+      version='1.1.0',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',
