@@ -10,8 +10,8 @@ except ImportError:
 if pypandoc:
     converted_readme = pypandoc.convert('README.md', 'rst', format='markdown')
     long_description = converted_readme
-    with open('README.rst', 'w') as outfile:
-        outfile.write(converted_readme)
+    # with open('README.rst', 'w') as outfile:
+    #     outfile.write(converted_readme)
 else:
     long_description = "[pypandoc missing]"
 
