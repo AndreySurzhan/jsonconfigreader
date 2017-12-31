@@ -18,7 +18,7 @@
 #
 import os
 import sys
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('.'))
 sys.path.append(os.path.join(os.path.dirname(__name__), '..'))
 
 
@@ -32,7 +32,7 @@ sys.path.append(os.path.join(os.path.dirname(__name__), '..'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.githubpages', 'sphinxtogithub']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -80,14 +80,10 @@ print(file_path)
    1. Navigate into project directory 
    2. `python -m unittest`
 
-## Generate docs
+## Generate docs and updating docs
 
 1. Run `easy_install -U sphinx`
 2. Navigate to `docs` folder
 3. Run `sphinx-quickstart`
+4. [Follow instruction](https://daler.github.io/sphinxdoc-test/includeme.html)
 
-
-## Updated documentation
-
-1. From project root directory run `make clean` to clean `./docs/_build` folder
-2. Run `make html` to generate new documentation
