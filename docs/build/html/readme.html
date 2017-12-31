@@ -68,8 +68,11 @@ section).</p>
 <li>Install all project dependencies if needed</li>
 </ol>
 <p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
-<p>NOTE: if pypandoc didn’t get installed. <a class="reference external" href="https://pypi.python.org/pypi/pypandoc">Please install it
-manually</a></p>
+<ol class="arabic simple" start="6">
+<li>Install pandoc and pypandoc.
+<a class="reference external" href="https://pypi.python.org/pypi/pypandoc">Instruction</a></li>
+</ol>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pypandoc</span></code></p>
 </div>
 <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
@@ -92,21 +95,17 @@ manually</a></p>
 <li>Create an instance of the class passing config folder path and
 options</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s1">&#39;C:\User</span><span class="se">\t</span><span class="s1">est&#39;</span>
-<span class="n">json_config_reader</span> <span class="o">=</span> <span class="n">JsonConfigReader</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span>
-                        <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;env&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;qa&#39;</span><span class="p">,</span> <span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;hotfix&#39;</span><span class="p">},</span>
-                                 <span class="s1">&#39;file_pattern&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{env[name]}</span><span class="s1">_</span><span class="si">{env[branch]}</span><span class="s1">_config&#39;</span><span class="p">})</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">config_path</span> <span class="o">=</span> <span class="s1">&#39;C:\User</span><span class="se">\t</span><span class="s1">est\qa_config.json&#39;</span>
+<span class="n">json_config_reader</span> <span class="o">=</span> <span class="n">JsonConfigReader</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">json_config_reader</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="n">json_config_reader</span><span class="o">.</span><span class="n">get_config_file_path</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dataBase1&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">db</span><span class="p">:</span><span class="mi">5000</span>
-<span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">:</span>\<span class="n">User</span>\<span class="n">test</span>\<span class="n">qa_hotfix_config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">:</span>\<span class="n">User</span>\<span class="n">test</span>\<span class="n">qa_config</span><span class="o">.</span><span class="n">json</span>
 </pre></div>
 </div>
-<p>NOTE: <code class="docutils literal"><span class="pre">options</span></code> is an optional argumet. It is possible to speficy
-<code class="docutils literal"><span class="pre">config_path</span></code> as <code class="docutils literal"><span class="pre">C:\User\test\qa_hotfix_config.json</span></code></p>
 </div>
 <div class="section" id="uploading-project-to-pypi">
 <h1>Uploading project to PyPi<a class="headerlink" href="#uploading-project-to-pypi" title="Permalink to this headline">¶</a></h1>
@@ -137,6 +136,14 @@ options</li>
 <li>Run <code class="docutils literal"><span class="pre">easy_install</span> <span class="pre">-U</span> <span class="pre">sphinx</span></code></li>
 <li>Navigate to <code class="docutils literal"><span class="pre">docs</span></code> folder</li>
 <li>Run <code class="docutils literal"><span class="pre">sphinx-quickstart</span></code></li>
+</ol>
+</div>
+<div class="section" id="updated-documentation">
+<h1>Updated documentation<a class="headerlink" href="#updated-documentation" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>From project root directory run <code class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></code> to clean
+<code class="docutils literal"><span class="pre">./docs/_build</span></code> folder</li>
+<li>Run <code class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></code> to generate new documentation</li>
 </ol>
 </div>
 
