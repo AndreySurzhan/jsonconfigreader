@@ -8,3 +8,7 @@ jsonconfigreader.egg-info/
 jsonconfigreader/__init__.pyc
 jsonconfigreader/json_config_reader.pyc
 venv/
+README.rst
+sphinx-docs/_static/
+sphinx-docs/_templates/
+sphinx-docs/build/clear/

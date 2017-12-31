@@ -1,5 +1,6 @@
 from setuptools import setup
 
+
 #converts markdown to reStructured
 try:
     import pypandoc
@@ -7,14 +8,15 @@ except ImportError:
     print("Install pypandoc to generate the field long_description")
     pypandoc = None
 if pypandoc:
-    long_description = "\n\n".join([
-        pypandoc.convert('README.md', 'rst', format='markdown'),
-    ])
+    converted_readme = pypandoc.convert('README.md', 'rst', format='markdown')
+    long_description = converted_readme
+    with open('README.rst', 'w') as outfile:
+        outfile.write(converted_readme)
 else:
     long_description = "[pypandoc missing]"
 
 setup(name='jsonconfigreader',
-      version='1.1.6',
+      version='1.1.7',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',
