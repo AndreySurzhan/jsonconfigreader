@@ -1,7 +1,7 @@
 {
   "defaults": {
     "databaseConnection": "local_connection",
-    "baseUrl": "https://qatest.com"
+    "baseUrl": "https:/devtest.com"
   },
   "databaseConnections": {
     "app": "app_connection",
@@ -12,14 +12,14 @@
       "databaseOverrides": {
         "local": "local_hotfix"
       },
-      "baseUrl": "https://hotfix-qatest.com"
+      "baseUrl": "https://hotfix-devtest.com"
     },
 
     "vnext": {
       "databaseOverrides": {
         "local": "local_vnext"
       },
-      "baseUrl": "https://vnext-qatest.com"
+      "baseUrl": "https://vnext-devtest.com"
     }
   }
 }

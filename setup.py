@@ -14,7 +14,7 @@ else:
     long_description = "[pypandoc missing]"
 
 setup(name='jsonconfigreader',
-      version='1.1.8',
+      version='1.2.0',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',
