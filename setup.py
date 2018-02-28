@@ -8,13 +8,13 @@ except ImportError:
     print("Install pypandoc to generate the field long_description")
     pypandoc = None
 if pypandoc:
-    converted_readme = pypandoc.convert('README.md', 'rst', format='markdown')
-    long_description = converted_readme
+    pypandoc.convert_file('README.md', 'rst', outputfile='README.rst')
+    long_description = open('README.rst').read()
 else:
     long_description = "[pypandoc missing]"
 
 setup(name='jsonconfigreader',
-      version='1.2.0',
+      version='1.3.0',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',

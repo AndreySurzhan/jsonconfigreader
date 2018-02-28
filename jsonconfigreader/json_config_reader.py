@@ -4,6 +4,9 @@ import logging
 
 import logging
 
+logging.basicConfig(level=logging.INFO)
+LOGGER = logging.getLogger(__name__)
+
 
 class JsonConfigReader(object):
 
@@ -16,27 +19,7 @@ class JsonConfigReader(object):
         Returns:
             void
         """
-        logging.basicConfig(level=logging.INFO)
-        self.logger = logging.getLogger(__name__)
         self._config_path = config_path
-
-    def read_json_file(self, file_path):
-        """Class method reads the data from json file and returs dictionary.
-
-        Returns:
-            dict: Config file content.
-
-        Raises:
-            IOError: If methods fails reading data from file exaption will be risen
-        """
-        config = None
-        try:
-            with open(file_path, 'r') as f:
-                config = json.load(f)
-        except IOError as e:
-            self.logger.error('Cannot read config file "{}"'.format(file_path))
-            self.logger.error(e.strerror)
-        return config
 
     def get_config_file_path(self):
         """Class method that returns full config file path.
@@ -53,7 +36,14 @@ class JsonConfigReader(object):
             dict: Configuration file content
         """
         config = self.read_json_file(self._config_path)
-        return self._parse_config(config)
+        if isinstance(config, list):
+            json_list = []
+            for item in config:
+                json_list.append(self._parse_config(item))
+            config = json_list
+        else:
+            self._parse_config(config)
+        return config
 
     def set_config_path(self, config_path):
         """Class method that sets config file path.
@@ -87,6 +77,25 @@ class JsonConfigReader(object):
             if type(value) is list:
                 for element in value:
                     self._parse_config(element, config)
+        return config
+
+    @staticmethod
+    def read_json_file(file_path):
+        """Class method reads the data from json file and returs dictionary.
+
+        Returns:
+            dict: Config file content.
+
+        Raises:
+            IOError: If methods fails reading data from file exaption will be risen
+        """
+        config = None
+        try:
+            with open(file_path, 'r') as f:
+                config = json.load(f)
+        except IOError as e:
+            LOGGER.error('Cannot read config file "{}"'.format(file_path))
+            LOGGER.error(e.strerror)
         return config
 
     @staticmethod
@@ -128,9 +137,9 @@ class JsonConfigReader(object):
         Returns:
             Could be bool, dict, srt, number, list etc.
         """
-        list = property_address.split('.')
+        property_names = property_address.split('.')
         value = dictionary
-        for address in list:
+        for address in property_names:
             if type(value) is not dict:
                 return value
             value = value[address]

@@ -13,8 +13,9 @@ class TestJsonConfigParser(unittest.TestCase):
         self.qa_config_file_path = os.path.join(self.config_folder_path,
                                                 self.file_name.format('qa'))
         self.dev_config_file_path = os.path.join(self.config_folder_path,
-                                                self.file_name.format('dev'))
+                                                 self.file_name.format('dev'))
         self.json_config_reader = JsonConfigReader(self.qa_config_file_path)
+        self.json_list = os.path.join(self.config_folder_path, 'list.json')
 
     def test_get_config_file_path(self):
         expected_config_file_path = self.qa_config_file_path
@@ -38,9 +39,10 @@ class TestJsonConfigParser(unittest.TestCase):
         expected_value = 'local_connection'
         config = {
             'test': 1,
-            'defaults': {'databaseConnection' : 'local_connection'}
-            }
-        actual_value = self.json_config_reader.get_value_by_property_address('defaults.databaseConnection', config)
+            'defaults': {'databaseConnection': 'local_connection'}
+        }
+        actual_value = self.json_config_reader.get_value_by_property_address(
+            'defaults.databaseConnection', config)
         self.assertEqual(actual_value, expected_value)
 
     def test_get_parsed_config(self):
@@ -49,6 +51,15 @@ class TestJsonConfigParser(unittest.TestCase):
         self.assertEqual(config['databaseConnections']['local'], 'local_connection')
         self.assertEqual(config['databaseConnections']['app'], 'app_connection')
         self.assertEqual(config['branches']['hotfix']['databaseOverrides']['local'], 'local_hotfix')
+
+    def test_get_parsed_json_list(self):
+        json_config_reader = JsonConfigReader(self.json_list)
+        json_list = json_config_reader.get()
+        self.assertTrue(type(json_list) is list)
+        self.assertEqual(json_list[0]['databaseConnections']['local'], 'local_connection')
+        self.assertEqual(json_list[0]['databaseConnections']['app'], 'app_connection')
+        self.assertEqual(json_list[0]['branches']['hotfix']['databaseOverrides']['local'],
+                         'local_hotfix')
 
     def test_get_parsed_config_by_full_file_path(self):
         config = JsonConfigReader(self.qa_config_file_path).get()
@@ -67,7 +78,6 @@ class TestJsonConfigParser(unittest.TestCase):
         self.assertEqual(config['defaults']['baseUrl'], 'https:/devtest.com')
         self.assertEqual(config['databaseConnections']['app'], 'app_connection')
         self.assertEqual(config['branches']['hotfix']['databaseOverrides']['local'], 'local_hotfix')
-
 
 if __name__ == '__main__':
     unittest.main()
