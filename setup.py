@@ -1,20 +1,46 @@
-from setuptools import setup
+from pathlib import Path
+
+from setuptools import setup, Command
 
 
-#converts markdown to reStructured
-try:
-    import pypandoc
-except ImportError:
-    print("Install pypandoc to generate the field long_description")
-    pypandoc = None
-if pypandoc:
-    pypandoc.convert_file('README.md', 'rst', outputfile='README.rst')
-    long_description = open('README.rst').read()
+class GenerateReadMeRst(Command):
+    description = "Generate README.rst out of README.md"
+
+    user_options = [
+        ('genreadme', None, None),
+    ]
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        """Function that generates README.rst out of README.md
+
+        :return: void
+        """
+        try:
+            import pypandoc
+        except ImportError:
+            print("Install pypandoc to generate README.rst")
+            pypandoc = None
+        if pypandoc:
+            pypandoc.convert_file('README.md', 'rst', outputfile='README.rst')
+
+
+my_file = Path('README.rst')
+if my_file.is_file():
+    long_description = my_file.read_text()
 else:
-    long_description = "[pypandoc missing]"
+    long_description = 'README doesn\'t exist'
 
 setup(name='jsonconfigreader',
-      version='1.3.0',
+      cmdclass={
+          'genreadme': GenerateReadMeRst,
+      },
+      version='1.3.1',
       description='Python JSON configuration reader and parser',
       long_description=long_description,
       author='Andrei Surzhan',
@@ -29,5 +55,5 @@ setup(name='jsonconfigreader',
           'Operating System :: MacOS',
           'Operating System :: Unix',
           'Programming Language :: Python'
-          ]
+      ]
       )
